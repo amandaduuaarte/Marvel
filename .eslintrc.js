@@ -1,28 +1,28 @@
 module.exports = {
   env: {
-    es2021: true,
+    es6: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
-  parser: '@typescript-eslint/parser',
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    __DEV__: 'readonly',
+  },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', 'prettier'],
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
+    'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
       'warn',
       {
-        extensions: ['.jsx', '.js', '.tsx', '.ts'],
+        extensions: ['*.jsx', '*.js', '*.tsx', '*.ts'],
       },
     ],
     'import/prefer-default-export': 'off',
