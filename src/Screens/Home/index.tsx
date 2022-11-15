@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, TextsContainer, SubTitle, Title} from './styles';
+import {Container, TextsContainer, SubTitle, Title, TypeName} from './styles';
 
 import {Header} from './Components/Header';
 import {CharacterType} from './Components/CharacterType';

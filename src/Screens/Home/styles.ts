@@ -24,3 +24,9 @@ export const Title = styled.Text`
   font-size: 32px;
   color: #313140;
 `;
+
+export const TypeName = styled.Text`
+  font-family: 'Roboto-Bold';
+  font-size: 18px;
+  color: #f2264b;
+`;
