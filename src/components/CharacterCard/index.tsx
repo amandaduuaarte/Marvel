@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   Container,
@@ -12,11 +13,13 @@ interface CardProps {
   // imgSource: string;
 }
 const CardBackground = '../../assets/spider-man.png';
+
 const CharacterCard = ({realName, fictionName}: CardProps) => {
+  const navigation = useNavigation();
   return (
-    <Container>
+    <Container onPress={() => navigation.navigate('details')}>
       <ContainerCard source={require(CardBackground)} resizeMode="cover">
-        <CharactersRealName> {realName}</CharactersRealName>
+        <CharactersRealName>{realName}</CharactersRealName>
         <CharacterName>{fictionName}</CharacterName>
       </ContainerCard>
     </Container>
