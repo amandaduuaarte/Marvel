@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   Container,
+  ContainerShadow,
   ContainerCard,
   CharactersRealName,
   CharacterName,
@@ -16,10 +17,12 @@ interface CardProps {
 const CharacterCard = ({realName, fictionName, avatar}: CardProps) => {
   const navigation = useNavigation();
   return (
-    <Container onPress={() => navigation.navigate('details')}>
+    <Container onPress={() => navigation.navigate('details', {avatar})}>
       <ContainerCard source={{uri: `${avatar}`}} resizeMode="cover">
-        <CharactersRealName>{realName}</CharactersRealName>
-        <CharacterName>{fictionName}</CharacterName>
+        <ContainerShadow>
+          <CharactersRealName>{realName}</CharactersRealName>
+          <CharacterName>{fictionName}</CharacterName>
+        </ContainerShadow>
       </ContainerCard>
     </Container>
   );

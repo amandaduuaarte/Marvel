@@ -1,6 +1,49 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ImageBackground`
+export const ContainerShadow = styled.View`
   height: 100%;
   width: 100%;
+  background: black;
+  opacity: 0.75;
+`;
+
+export const ContainerImg = styled.ImageBackground`
+  height: 100%;
+  width: 100%;
+`;
+
+export const ContainerTexts = styled.View`
+  margin-top: 64%;
+  height: 100%;
+  width: 100%;
+  padding: 0 24px;
+`;
+
+export const AlterEgoText = styled.Text`
+  font-family: 'Roboto-Regular';
+  font-size: 16px;
+  color: white;
+`;
+
+export const NameText = styled.Text`
+  font-family: 'Roboto-Bold';
+  font-size: 40px;
+  color: white;
+`;
+
+export const ContainerCaracters = styled.View`
+  height: 48px;
+  width: 100%;
+  margin: 24px 4px;
+
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const CaracterCard = styled.View`
+  width: 20%;
+  height: 48px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
