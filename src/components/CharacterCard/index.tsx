@@ -10,15 +10,14 @@ import {
 interface CardProps {
   realName: string;
   fictionName: string;
-  // imgSource: string;
+  avatar: string;
 }
-const CardBackground = '../../assets/spider-man.png';
 
-const CharacterCard = ({realName, fictionName}: CardProps) => {
+const CharacterCard = ({realName, fictionName, avatar}: CardProps) => {
   const navigation = useNavigation();
   return (
     <Container onPress={() => navigation.navigate('details')}>
-      <ContainerCard source={require(CardBackground)} resizeMode="cover">
+      <ContainerCard source={{uri: `${avatar}`}} resizeMode="cover">
         <CharactersRealName>{realName}</CharactersRealName>
         <CharacterName>{fictionName}</CharacterName>
       </ContainerCard>

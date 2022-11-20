@@ -18,8 +18,7 @@ const Home = () => {
       <CharacterType />
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <GroupingType title="Heróis" />
-        <GroupingType title="Vilões" />
+        <GroupingType />
       </ScrollView>
     </Container>
   );

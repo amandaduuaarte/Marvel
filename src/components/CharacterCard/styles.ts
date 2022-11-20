@@ -9,7 +9,9 @@ export const ContainerCard = styled.ImageBackground`
   width: 140px;
   text-align: flex-start;
   justify-content: flex-end;
-  padding: 12px;
+  padding: 8px;
+  overflow: hidden;
+  border-radius: 20px;
 `;
 
 export const CharactersRealName = styled.Text`
@@ -20,6 +22,6 @@ export const CharactersRealName = styled.Text`
 
 export const CharacterName = styled.Text`
   font-family: 'Roboto-Bold';
-  font-size: 24px;
+  font-size: 16px;
   color: white;
 `;
