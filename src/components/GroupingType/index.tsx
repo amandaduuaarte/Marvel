@@ -1,24 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView} from 'react-native';
-import {api} from '../../services/api';
+import {ScrollView} from 'react-native';
+import {useCategorys} from '../../context/CategoriesContext';
 
 import {CharacterCard} from '../CharacterCard';
 import {Container, ContainerCards, CategoryText, SeeMore} from './styles';
 
 const GroupingType = () => {
-  const [charactersGroup, setCharactersGroup] = useState<any>();
-
-  useEffect(() => {
-    api
-      .get('/characters/categories')
-      .then(response => {
-        setCharactersGroup(response.data);
-        console.log(response.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+  const {heros, antiHeros, villains, aliens, humans} = useCategorys();
 
   return (
     <Container>
@@ -29,9 +17,10 @@ const GroupingType = () => {
 
       <ContainerCards style={{height: 275}}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {charactersGroup &&
-            charactersGroup.categories.hero.map(character => (
+          {heros &&
+            heros.map(character => (
               <CharacterCard
+                key={character.id}
                 realName={character.alterEgo}
                 fictionName={character.fictionname}
                 avatar={character.avatar}
@@ -47,9 +36,10 @@ const GroupingType = () => {
 
       <ContainerCards style={{height: 275}}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {charactersGroup &&
-            charactersGroup.categories.villain.map(character => (
+          {villains &&
+            villains.map(character => (
               <CharacterCard
+                key={character.id}
                 realName={character.alterEgo}
                 fictionName={character.fictionname}
                 avatar={character.avatar}
@@ -59,15 +49,16 @@ const GroupingType = () => {
       </ContainerCards>
 
       <ContainerCards style={{height: 45}}>
-        <CategoryText>Anti-Heróis</CategoryText>
+        <CategoryText>Anti-heróis</CategoryText>
         <SeeMore>Ver tudo</SeeMore>
       </ContainerCards>
 
       <ContainerCards style={{height: 275}}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {charactersGroup &&
-            charactersGroup.categories.antiHero.map(character => (
+          {antiHeros &&
+            antiHeros.map(character => (
               <CharacterCard
+                key={character.id}
                 realName={character.alterEgo}
                 fictionName={character.fictionname}
                 avatar={character.avatar}
@@ -83,9 +74,10 @@ const GroupingType = () => {
 
       <ContainerCards style={{height: 275}}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {charactersGroup &&
-            charactersGroup.categories.alien.map(character => (
+          {aliens &&
+            aliens.map(character => (
               <CharacterCard
+                key={character.id}
                 realName={character.alterEgo}
                 fictionName={character.fictionname}
                 avatar={character.avatar}
@@ -101,9 +93,10 @@ const GroupingType = () => {
 
       <ContainerCards style={{height: 275}}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {charactersGroup &&
-            charactersGroup.categories.human.map(character => (
+          {humans &&
+            humans.map(character => (
               <CharacterCard
+                key={character.id}
                 realName={character.alterEgo}
                 fictionName={character.fictionname}
                 avatar={character.avatar}

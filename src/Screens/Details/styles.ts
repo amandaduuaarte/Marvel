@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const ContainerShadow = styled.View`
+export const ContainerShadow = styled.ScrollView`
   height: 100%;
   width: 100%;
   background: black;
@@ -46,4 +46,17 @@ export const CaracterCard = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+export const Biography = styled.Text`
+  font-family: 'Roboto-Regular';
+  font-size: 14px;
+  color: white;
+  text-align: justify;
+`;
+
+export const TopicText = styled.Text`
+  font-family: 'Roboto-bold';
+  font-size: 18px;
+  color: white;
 `;

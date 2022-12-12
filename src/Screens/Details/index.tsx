@@ -9,6 +9,8 @@ import {
   ContainerCaracters,
   CaracterCard,
   ContainerImg,
+  Biography,
+  TopicText,
 } from './styles';
 
 import Age from '../../assets/icons/age.svg';
@@ -21,8 +23,9 @@ const Details = () => {
   const {avatar} = route.params as any;
 
   return (
+    //Fica melhor passar as infos pra essa pagina so o id e aqui faz uma
+    // req
     <ContainerImg source={{uri: `${avatar}`}} resizeMode="cover">
-      {/* <ScrollView showsVerticalScrollIndicator={false}> */}
       <ContainerShadow>
         <ContainerTexts>
           <AlterEgoText>Peter Parker</AlterEgoText>
@@ -50,8 +53,22 @@ const Details = () => {
               <AlterEgoText>Terra</AlterEgoText>
             </CaracterCard>
           </ContainerCaracters>
+          <Biography>
+            Em Forest Hills, Queens, Nova York, o estudante de ensino médio,
+            Peter Parker, é um cientista orfão que vive com seu tio Ben e tia
+            May. Ele é mordido por uma aranha radioativa em uma exposição
+            científica e adquire a agilidade e a força proporcional de um
+            aracnídeo. Junto com a super força, Parker ganha a capacidade de
+            andar nas paredes e tetos.
+            {'\n'} {'\n'}
+            Através de sua habilidade nativa para a ciência, ele desenvolve um
+            aparelho que o permitir lançar teias artificiais. Inicialmente
+            buscando capitalizar suas novas habilidades, Parker cria um traje e,
+            como Homem Aranha, torna-se uma estrela de televisão.
+          </Biography>
+          <TopicText>Habilidades</TopicText>
+          <TopicText>Filmes</TopicText>
         </ContainerTexts>
-        {/* </ScrollView> */}
       </ContainerShadow>
     </ContainerImg>
   );
