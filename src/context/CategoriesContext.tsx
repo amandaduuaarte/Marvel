@@ -33,29 +33,29 @@ function CategoriesContextProvider({children}: CategoriesProviderProps) {
   const [humans, setHumans] = useState<Array<CategoryProps>>();
 
   const getHeros = async (): Promise<void> => {
-    const response = await api.get('/characters/categories/heros');
+    const response = await api.get('/characters/categories/hero');
     setHeros(response.data);
   };
 
   const getAntiHeros = async (): Promise<void> => {
-    const response = await api.get('/characters/categories/antiheros');
+    const response = await api.get('/characters/categories/antihero');
     setAntiHeros(response.data);
   };
 
   const getvillains = async (): Promise<void> => {
-    const response = await api.get('/characters/categories/villains');
+    const response = await api.get('/characters/categories/villain');
 
     setVillains(response.data);
   };
 
   const getAliens = async (): Promise<void> => {
-    const response = await api.get('/characters/categories/aliens');
+    const response = await api.get('/characters/categories/alien');
 
     setAliens(response.data);
   };
 
   const getHumans = async (): Promise<void> => {
-    const response = await api.get('/characters/categories/humans');
+    const response = await api.get('/characters/categories/human');
 
     setHumans(response.data);
   };
@@ -67,6 +67,7 @@ function CategoriesContextProvider({children}: CategoriesProviderProps) {
     getAliens();
     getHumans();
   }, []);
+
   return (
     <CategoriesContext.Provider
       value={{

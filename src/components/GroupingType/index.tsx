@@ -1,12 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import {useCategorys} from '../../context/CategoriesContext';
+import {api} from '../../services/api';
 
 import {CharacterCard} from '../CharacterCard';
 import {Container, ContainerCards, CategoryText, SeeMore} from './styles';
 
 const GroupingType = () => {
   const {heros, antiHeros, villains, aliens, humans} = useCategorys();
+
+  useEffect(() => {
+    console.log(typeof heros);
+  }, []);
 
   return (
     <Container>
@@ -19,12 +24,7 @@ const GroupingType = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {heros &&
             heros.map(character => (
-              <CharacterCard
-                key={character.id}
-                realName={character.alterEgo}
-                fictionName={character.fictionname}
-                avatar={character.avatar}
-              />
+              <CharacterCard key={character.id} character={character} />
             ))}
         </ScrollView>
       </ContainerCards>
@@ -38,12 +38,7 @@ const GroupingType = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {villains &&
             villains.map(character => (
-              <CharacterCard
-                key={character.id}
-                realName={character.alterEgo}
-                fictionName={character.fictionname}
-                avatar={character.avatar}
-              />
+              <CharacterCard key={character.id} character={character} />
             ))}
         </ScrollView>
       </ContainerCards>
@@ -57,12 +52,7 @@ const GroupingType = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {antiHeros &&
             antiHeros.map(character => (
-              <CharacterCard
-                key={character.id}
-                realName={character.alterEgo}
-                fictionName={character.fictionname}
-                avatar={character.avatar}
-              />
+              <CharacterCard key={character.id} character={character} />
             ))}
         </ScrollView>
       </ContainerCards>
@@ -76,12 +66,7 @@ const GroupingType = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {aliens &&
             aliens.map(character => (
-              <CharacterCard
-                key={character.id}
-                realName={character.alterEgo}
-                fictionName={character.fictionname}
-                avatar={character.avatar}
-              />
+              <CharacterCard key={character.id} character={character} />
             ))}
         </ScrollView>
       </ContainerCards>
@@ -95,12 +80,7 @@ const GroupingType = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {humans &&
             humans.map(character => (
-              <CharacterCard
-                key={character.id}
-                realName={character.alterEgo}
-                fictionName={character.fictionname}
-                avatar={character.avatar}
-              />
+              <CharacterCard key={character.id} character={character} />
             ))}
         </ScrollView>
       </ContainerCards>

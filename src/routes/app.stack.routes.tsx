@@ -11,7 +11,13 @@ export function AppStackRoutes() {
       initialRouteName="home"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="home" component={Home} />
-      <Stack.Screen name="details" component={Details} />
+      <Stack.Screen
+        name="details"
+        component={Details}
+        options={{
+          headerBackTitle: 'Voltar',
+        }}
+      />
     </Stack.Navigator>
   );
 }

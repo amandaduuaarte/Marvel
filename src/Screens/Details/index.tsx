@@ -1,5 +1,5 @@
 import {useRoute} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import {
   ContainerShadow,
@@ -11,31 +11,58 @@ import {
   ContainerImg,
   Biography,
   TopicText,
+  SkillsText,
+  SkillsCard,
 } from './styles';
 
 import Age from '../../assets/icons/age.svg';
 import Weight from '../../assets/icons/weight.svg';
 import Height from '../../assets/icons/height.svg';
 import Universe from '../../assets/icons/universe.svg';
+import {api} from '../../services/api';
+
+interface SkillsProps {
+  id: string;
+  force: number;
+  intelligence: number;
+  agility: number;
+  resistance: number;
+  velocity: number;
+}
+
+interface CharacterProps {
+  character: {
+    id: string;
+    alterEgo: string;
+    fictionname: string;
+    avatar: string;
+    biography?: string;
+  };
+}
 
 const Details = () => {
   const route = useRoute();
-  const {avatar} = route.params as any;
+  const {character} = route.params as CharacterProps;
+
+  const [skills, setSkills] = useState<SkillsProps>();
+
+  useEffect(() => {
+    api.get(`/characters/skills/${character?.id}`).then(response => {
+      setSkills(response.data.skills[0]);
+    });
+  }, []);
 
   return (
-    //Fica melhor passar as infos pra essa pagina so o id e aqui faz uma
-    // req
-    <ContainerImg source={{uri: `${avatar}`}} resizeMode="cover">
+    <ContainerImg source={{uri: `${character?.avatar}`}} resizeMode="cover">
       <ContainerShadow>
         <ContainerTexts>
-          <AlterEgoText>Peter Parker</AlterEgoText>
-          <NameText>Homem</NameText>
-          <NameText>Aranha</NameText>
+          <AlterEgoText>{character.alterEgo}</AlterEgoText>
+          <NameText>{character.fictionname}</NameText>
 
           <ContainerCaracters>
             <CaracterCard>
               <Age />
-              <AlterEgoText>30 anos</AlterEgoText>
+              <AlterEgoText>{skills?.velocity} Anos</AlterEgoText>
             </CaracterCard>
 
             <CaracterCard>
@@ -53,20 +80,21 @@ const Details = () => {
               <AlterEgoText>Terra</AlterEgoText>
             </CaracterCard>
           </ContainerCaracters>
-          <Biography>
-            Em Forest Hills, Queens, Nova York, o estudante de ensino médio,
-            Peter Parker, é um cientista orfão que vive com seu tio Ben e tia
-            May. Ele é mordido por uma aranha radioativa em uma exposição
-            científica e adquire a agilidade e a força proporcional de um
-            aracnídeo. Junto com a super força, Parker ganha a capacidade de
-            andar nas paredes e tetos.
-            {'\n'} {'\n'}
-            Através de sua habilidade nativa para a ciência, ele desenvolve um
-            aparelho que o permitir lançar teias artificiais. Inicialmente
-            buscando capitalizar suas novas habilidades, Parker cria um traje e,
-            como Homem Aranha, torna-se uma estrela de televisão.
-          </Biography>
+          <Biography>{character.biography}</Biography>
+
           <TopicText>Habilidades</TopicText>
+
+          <SkillsCard>
+            <SkillsText>Força: {skills?.force}</SkillsText>
+            <SkillsText>Inteligência: {skills?.intelligence}</SkillsText>
+            <SkillsText>Agilidade: {skills?.agility}</SkillsText>
+          </SkillsCard>
+
+          <SkillsCard>
+            <SkillsText>Resistência: {skills?.resistance}</SkillsText>
+            <SkillsText>Velocidade: {skills?.velocity}</SkillsText>
+          </SkillsCard>
+
           <TopicText>Filmes</TopicText>
         </ContainerTexts>
       </ContainerShadow>
