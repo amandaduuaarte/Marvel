@@ -4,9 +4,9 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/amandaduuaarte/Marvel?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/amandaduuaarte/Marvel?style=for-the-badge)
 
-<img src="exemplo-image.png" alt="exemplo imagem">
-
 > Aplicação front-end que lista e exibe caracteristicas e informações de alguns personagens do universo Marvel.
+
+![Spider Man (1)](https://user-images.githubusercontent.com/89158507/210156057-0a0911bd-2877-48aa-8012-8ac70f2c7de3.png)
 
 ### Ajustes e melhorias
 
