@@ -9,10 +9,6 @@ import {Container, ContainerCards, CategoryText, SeeMore} from './styles';
 const GroupingType = () => {
   const {heros, antiHeros, villains, aliens, humans} = useCategorys();
 
-  useEffect(() => {
-    console.log(typeof heros);
-  }, []);
-
   return (
     <Container>
       <ContainerCards style={{height: 45}}>

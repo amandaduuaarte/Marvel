@@ -30,6 +30,13 @@ interface SkillsProps {
   velocity: number;
 }
 
+interface CaracteristicsProps {
+  id: string;
+  birth: number;
+  height: number;
+  weight: number;
+  universe: string;
+}
 interface CharacterProps {
   character: {
     id: string;
@@ -45,10 +52,15 @@ const Details = () => {
   const {character} = route.params as CharacterProps;
 
   const [skills, setSkills] = useState<SkillsProps>();
+  const [caracteristics, setCaracteristics] = useState<CaracteristicsProps>();
 
   useEffect(() => {
     api.get(`/characters/skills/${character?.id}`).then(response => {
-      setSkills(response.data.skills[0]);
+      setSkills(response.data.skills);
+    });
+
+    api.get(`/characters/caracteristics/${character?.id}`).then(response => {
+      setCaracteristics(response.data.caracteristics[0]);
     });
   }, []);
 
@@ -67,17 +79,17 @@ const Details = () => {
 
             <CaracterCard>
               <Weight />
-              <AlterEgoText>78kg</AlterEgoText>
+              <AlterEgoText>{caracteristics?.weight}kg</AlterEgoText>
             </CaracterCard>
 
             <CaracterCard>
               <Height />
-              <AlterEgoText>1.8m</AlterEgoText>
+              <AlterEgoText>{caracteristics?.height}m</AlterEgoText>
             </CaracterCard>
 
             <CaracterCard>
               <Universe />
-              <AlterEgoText>Terra</AlterEgoText>
+              <AlterEgoText>{caracteristics?.universe}</AlterEgoText>
             </CaracterCard>
           </ContainerCaracters>
           <Biography>{character.biography}</Biography>
